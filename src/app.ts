@@ -12,6 +12,6 @@ app.use(express.json());
 
 app.use("/movies", movieRoutes);
 
-app.resource("/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 export default app;

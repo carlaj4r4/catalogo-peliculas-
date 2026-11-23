@@ -8,16 +8,31 @@ import {
   deleteMovie,
 } from "./movie.controller";
 
+import { authMiddleware } from "../../middlewares/auth.middleware";
+
 const router = Router();
 
+// Rutas públicas
 router.get("/", getAllMovies);
-
 router.get("/:id", getMovieById);
 
-router.post("/", createMovie);
+// Rutas protegidas
+router.post(
+  "/",
+  authMiddleware,
+  createMovie
+);
 
-router.put("/:id", updateMovie);
+router.put(
+  "/:id",
+  authMiddleware,
+  updateMovie
+);
 
-router.delete("/:id", deleteMovie);
+router.delete(
+  "/:id",
+  authMiddleware,
+  deleteMovie
+);
 
 export default router;
